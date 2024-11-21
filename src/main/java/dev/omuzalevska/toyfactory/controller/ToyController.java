@@ -6,6 +6,9 @@ import dev.omuzalevska.toyfactory.model.GoodToy;
 import dev.omuzalevska.toyfactory.model.BadToy;
 import dev.omuzalevska.toyfactory.view.ConsoleView;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class ToyController {
@@ -62,7 +65,7 @@ public class ToyController {
             switch (choice) {
                 case 1 -> viewGoodToys();
                 case 2 -> viewBadToys();
-                case 3 -> exportToysToCSV();
+                case 3 -> saveToysToCsv("output/ListAllToys.csv");
                 case 4 -> {
                     System.out.println("Signing out...");
                     return;
@@ -97,9 +100,6 @@ public class ToyController {
 
             toy = new BadToy(id, name, category, contents);
         }
-        // toy.setId(id);
-        // toy.setName(name);
-        // toy.setCategory(category);
         repository.add(toy);
 
         System.out.println("Toy added successfully!");
@@ -133,7 +133,16 @@ public class ToyController {
                 .forEach(toy -> System.out.println("ID: " + toy.getId() + ", Name: " + toy.getName()));
     }
 
-    private void exportToysToCSV() {
-        System.out.println("Exporting to CSV... (mocked functionality)");
+    private void saveToysToCsv(String fileName) {
+    try (PrintWriter writer = new PrintWriter(new File(fileName))) {
+        List<Toy> toys = repository.getAll();
+        writer.println("ID,Name,Category");
+        for (Toy toy : toys) {
+            writer.println(toy.getId() + "," + toy.getName() + "," + toy.getCategory());
+        }
+        System.out.println("Toys saved to " + fileName);
+    } catch (Exception e) {
+        System.err.println("Error saving to CSV: " + e.getMessage());
     }
+}
 }

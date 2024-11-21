@@ -11,7 +11,6 @@ public class GoodToy extends Toy {
         this.recommendedAge = recommendedAge;
         this.brand = brand;
     }
-    // Getters and Setters
 
     public int getRecommendedAge() {
         return recommendedAge;
