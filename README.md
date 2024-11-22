@@ -34,6 +34,8 @@ The program will prompt you to log in as either an "Elf" or "Santa"
 
 
 ## Diagrams
+<img src="src/img/DiagClasses.png">
+
 
 ## Authors
 Oksana Muzalevska
