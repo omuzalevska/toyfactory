@@ -16,7 +16,7 @@ public class ToyRepositoryImpl implements ToyRepository {
     }
 
     public List<Toy> getAll() {
-        return new ArrayList<>(toys); // Захист від модифікації зовнішнім кодом
+        return new ArrayList<>(toys); 
     }
 
     public Toy findById(String id) {
