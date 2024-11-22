@@ -8,7 +8,7 @@ class ToyTest {
     @Test
     void testConstructorWithoutParam() {
         Toy toy = new Toy() {
-        }; // анонімний клас,бо Toy абстрактний
+        }; 
         assertNull(toy.getId());
         assertNull(toy.getName());
         assertNull(toy.getCategory());
